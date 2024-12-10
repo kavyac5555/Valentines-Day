@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine Request</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: url('backround.jpg') no-repeat center center fixed;
+            background-size: cover;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            background-color: rgba(241, 202, 232, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            position: relative;
+        }
+
+        h1 {
+            /*color */
+            color: #ff8ec6;
+            margin-bottom: 20px;
+        }
+
+        .button-container {
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+            position: center;
+            height: 200px; /* Ensures the No button stays within a defined area */
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #yes-btn {
+            background-color: #ffb1d8;
+            color: white;
+        }
+
+        #no-btn {
+            background-color: rgba(205, 162, 195, 0.8);
+            color: rgba(204, 148, 191, 0.8);
+            position: absolute;
+        }
+
+        #cat-image {
+            display: none;
+            margin-top: 20px;
+            width: 300px;
+            height: 200px;
+            border: 5px solid #ff69b4;
+            border-radius: 10px;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            button {
+                font-size: 14px;
+                padding: 8px 16px;
+            }
+
+            #cat-image {
+                width: 250px;
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Will you be my Valentine? ❤</h1>
+        <div class="button-container">
+            <button id="yes-btn">Yes</button>
+            <button id="no-btn">No</button>
+        </div>
+        <img id="cat-image" src="" alt="Cute Cat">
+    </div>
+
+    <script>
+        const noBtn = document.getElementById('no-btn');
+        const yesBtn = document.getElementById('yes-btn');
+        const catImage = document.getElementById('cat-image');
+
+        const catImages = [
+            'https://i.pinimg.com/564x/ce/fd/97/cefd97828f823d23e3ecae8639b88246.jpg',
+            'https://cdn.shopify.com/s/files/1/0344/6469/files/Screen_Shot_2019-02-14_at_3.47.30_PM.png?v=1550177266',
+            'https://i.pinimg.com/736x/32/ec/c1/32ecc1b4ad82e5c8612fd4deba1adbea.jpg',
+            'https://pbs.twimg.com/media/FLknjExWUAAlHRQ.png',
+            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTveJYoIb_rIA6uBuWEbgrBzinDpV1fIPcQ1g&s'
+        ];
+
+
+        noBtn.addEventListener('mouseover', () => {
+            const container = document.querySelector('.button-container');
+            const maxX = container.offsetWidth - noBtn.offsetWidth;
+            const maxY = container.offsetHeight - noBtn.offsetHeight;
+            const x = Math.random() * maxX;
+            const y = Math.random() * maxY;
+            noBtn.style.left = `${x}px`;
+            noBtn.style.top = `${y}px`;
+            catImage.src = catImages[Math.floor(Math.random() * catImages.length)];
+            catImage.style.display = 'block';
+        });
+
+        yesBtn.addEventListener('click', () => {
+            alert('Yay! You said Yes! Happy Valentine’s Day!');
+            catImage.style.display = 'none';
+        });
+    </script>
+</body>
+</html>
